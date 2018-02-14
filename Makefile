@@ -29,7 +29,7 @@ build: doc
 
 doc-rebuild:
 	@make -C docs/ clean
-	@make SPHINXBUILD=../bin/sphinx-build -C docs/ html
+	@make SPHINXBUILD=sphinx-build -C docs/ html
 
 docs: doc
 
@@ -45,11 +45,11 @@ view-doc: doc
 test: doc-rebuild
 	@echo "You will need Coverage 3.5 and unittest2 or higher for this to work."
 	@rm -rf htmlcov
-	@bin/coverage erase
-	@bin/coverage run run_tests.py
-	@bin/coverage report -m
+	@coverage erase
+	@coverage run run_tests.py
+	@coverage report -m
 	@echo "HTML report generated in the 'htmlcov' directory."
-	@bin/coverage html -d htmlcov
+	@coverage html -d htmlcov
 
 lint:
 	@pylint $(PKG_NAME)
